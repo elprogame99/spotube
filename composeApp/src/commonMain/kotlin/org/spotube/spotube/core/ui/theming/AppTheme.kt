@@ -233,7 +233,7 @@ fun SpotubeTheme(
             )
         )
     ) {
-        val colors = appColorsFrom(MillenniumTheme.colors)
+        val colors = org.spotube.spotube.modules.emotune.emotuneAppColors(appColorsFrom(MillenniumTheme.colors))
         MillenniumTooltipHost {
             CompositionLocalProvider(
                 LocalAppColors provides colors,

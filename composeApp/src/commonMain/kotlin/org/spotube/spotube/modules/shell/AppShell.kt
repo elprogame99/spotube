@@ -76,6 +76,9 @@ import org.spotube.spotube.modules.shell.player_queue.PlayerQueueContentViewMode
 import org.spotube.spotube.modules.shell.player_queue.QueueSheet
 import kotlinx.coroutines.launch
 import org.koin.compose.koinInject
+import org.spotube.spotube.modules.emotune.EmotuneColors
+import org.spotube.spotube.modules.emotune.EmotuneSidebar
+import org.spotube.spotube.modules.emotune.EmotunePlayerBar
 import org.koin.compose.viewmodel.koinViewModel
 import org.spotube.millennium.composables.MillenniumSeparator
 import org.spotube.millennium.composables.MillenniumSnackbarHost
@@ -153,12 +156,12 @@ fun AppShell(
                     Box(
                         modifier = Modifier
                             .fillMaxSize()
-                            .background(MillenniumTheme.colors.background)
-                            .hazeSource(state = bgHazeState) // <-- Put it here!
+                            .background(EmotuneColors.Background)
+                            .hazeSource(state = bgHazeState)
                     )
                     Column(modifier = Modifier.fillMaxSize()) {
                         Row(modifier = Modifier.weight(1f)) {
-                            AppSidebar(
+                            EmotuneSidebar(
                                 navigator = navigator,
                                 navigationState = navigationState
                             )
@@ -172,12 +175,10 @@ fun AppShell(
                                 content()
                             }
                         }
-                        AppLargePlayer(
-                            hazeState = hazeState,
+                        EmotunePlayerBar(
                             modifier = Modifier.fillMaxWidth(),
-                            onQueue = queueViewModel::toggleQueueVisibility,
-                            onAlternativeSource = alternativeViewModel::toggleAlternativeVisibility,
-                            onLyrics = { navigatorCommands.navigateTo(Routes.Lyrics) })
+                            onQueue = queueViewModel::toggleQueueVisibility
+                        )
                     }
 
                     if (isQueueVisible) {

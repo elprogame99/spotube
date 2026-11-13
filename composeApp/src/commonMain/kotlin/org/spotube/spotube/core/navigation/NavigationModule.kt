@@ -24,6 +24,7 @@ import org.spotube.spotube.modules.blacklist.BlacklistScreen
 import org.spotube.spotube.modules.devices.DevicesScreen
 import org.spotube.spotube.modules.devices.RemoteControlScreen
 import org.spotube.spotube.modules.jam.JamScreen
+import org.spotube.spotube.modules.emotune.EmotionsScreen
 import org.spotube.spotube.modules.home.HomeScreen
 import org.spotube.spotube.modules.library.LibraryScreen
 import org.spotube.spotube.modules.library.local_tracks.LocalFolderScreen
@@ -108,7 +109,7 @@ val navigationModule = module {
     singleOf(::NavigationCommands)
     navigation<Routes.Home> {
         MetadataPluginGuard {
-            HomeScreen(viewModel = koinViewModel())
+            EmotionsScreen()
         }
     }
     navigation<Routes.Search> {

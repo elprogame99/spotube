@@ -1131,4 +1131,20 @@
     <string name="media_browser_featured">Featured</string>
     <string name="media_browser_saved_tracks">Saved Tracks</string>
     <string name="media_browser_top_tracks">Top Tracks</string>
+    <!-- EMOTUNE -->
+    <string name="emotune_brand_subtitle">Música &amp; MP4</string>
+    <string name="emotune_search_hint">¿Qué quieres escuchar?</string>
+    <string name="emotune_nav_discover">Descubrir</string>
+    <string name="emotune_nav_emotions">Emociones</string>
+    <string name="emotune_nav_search">Buscar</string>
+    <string name="emotune_nav_collection">Mi Colección</string>
+    <string name="emotune_nav_all_music">Toda la Música</string>
+    <string name="emotune_nav_favorites">Favoritos</string>
+    <string name="emotune_nav_playlists">Playlists</string>
+    <string name="emotune_add_music">Añadir música o vídeos</string>
+    <string name="emotune_how_do_you_feel">¿Cómo te sientes hoy?</string>
+    <string name="emotune_how_do_you_feel_desc">Selecciona una emoción para filtrar y sintonizar con tu estado de ánimo.</string>
+    <string name="emotune_all_emotions">Todas las emociones</string>
+    <string name="emotune_tracks_count">%1$d canciones</string>
+    <string name="emotune_load_more">Cargar más</string>
 </resources>
