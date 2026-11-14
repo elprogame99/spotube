@@ -517,10 +517,11 @@ jobs:
           restore-keys: graalvm-${{ runner.os }}-${{ runner.arch }}-
 
       - name: Deep Clean Rust Target Cache
+        working-directory: composeApp
         shell: pwsh
         run: |
-          if (Test-Path "composeApp/target") {
-            Remove-Item -Recurse -Force "composeApp/target"
+          if (Test-Path "target") {
+            Remove-Item -Recurse -Force "target"
           }
           cargo clean
 
