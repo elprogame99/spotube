@@ -516,15 +516,19 @@ jobs:
           key: graalvm-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('gradle/libs.versions.toml', 'composeApp/build.gradle.kts') }}
           restore-keys: graalvm-${{ runner.os }}-${{ runner.arch }}-
 
-      - name: Clean Rust target cache
-        working-directory: composeApp
-        run: cargo clean
+      - name: Deep Clean Rust Target Cache
+        shell: pwsh
+        run: |
+          if (Test-Path "composeApp/target") {
+            Remove-Item -Recurse -Force "composeApp/target"
+          }
+          cargo clean
 
       - name: Package EXE
         env:
           # Nucleus lists GraalVM CE releases via the GitHub API; unauthenticated calls hit the 60/hour limit
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./gradlew :composeApp:packageGraalvmExe -Pnightly=${{ inputs.release_type == 'nightly' }} -PbuildNumber=${{ github.run_number }}
+        run: ./gradlew :composeApp:packageGraalvmExe -Pnightly=${{ inputs.release_type == 'nightly' }} -PbuildNumber=${{ github.run_number }} --no-daemon
 
       - name: Rename Windows artifacts
         shell: pwsh
