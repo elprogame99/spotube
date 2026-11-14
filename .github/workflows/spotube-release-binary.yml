@@ -255,12 +255,6 @@ jobs:
           name: android-apk
           path: Spotube-android-all-arch.apk
 
-      - name: Setup tmate session on failure
-        if: ${{ inputs.debug_ssh && failure() }}
-        uses: mxschmitt/action-tmate@v3
-        with:
-          limit-access-to-actor: true
-
   build-linux:
     name: Linux Desktop
     needs: [validate-inputs, prepare-deps]
@@ -368,12 +362,6 @@ jobs:
         with:
           name: linux-appimage
           path: Spotube-linux-x86_64.AppImage
-
-      - name: Setup tmate session on failure
-        if: ${{ inputs.debug_ssh && failure() }}
-        uses: mxschmitt/action-tmate@v3
-        with:
-          limit-access-to-actor: true
 
   build-linux-arm64:
     name: Linux Desktop (aarch64)
@@ -490,12 +478,6 @@ jobs:
           name: linux-appimage-arm64
           path: Spotube-linux-aarch64.AppImage
 
-      - name: Setup tmate session on failure
-        if: ${{ inputs.debug_ssh && failure() }}
-        uses: mxschmitt/action-tmate@v3
-        with:
-          limit-access-to-actor: true
-
   build-windows:
     name: Windows Desktop
     needs: [validate-inputs, prepare-deps]
@@ -553,12 +535,6 @@ jobs:
         with:
           name: windows-exe
           path: Spotube-windows-x86_64-setup.exe
-
-      - name: Setup tmate session on failure
-        if: ${{ inputs.debug_ssh && failure() }}
-        uses: mxschmitt/action-tmate@v3
-        with:
-          limit-access-to-actor: true
 
   # Apple silicon only: GraalVM native-image can't cross-compile, and Intel macs aren't supported
   build-macos:
@@ -623,12 +599,6 @@ jobs:
         with:
           name: macos-dmg
           path: Spotube-macos-apple-silicon.dmg
-
-      - name: Setup tmate session on failure
-        if: ${{ inputs.debug_ssh && failure() }}
-        uses: mxschmitt/action-tmate@v3
-        with:
-          limit-access-to-actor: true
 
   build-ios:
     name: iOS
@@ -705,12 +675,6 @@ jobs:
         with:
           name: ios-ipa
           path: Spotube-ios.ipa
-
-      - name: Setup tmate session on failure
-        if: ${{ inputs.debug_ssh && failure() }}
-        uses: mxschmitt/action-tmate@v3
-        with:
-          limit-access-to-actor: true
 
   create-release:
     name: Create GitHub Release
